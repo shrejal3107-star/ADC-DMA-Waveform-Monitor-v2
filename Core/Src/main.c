@@ -8,10 +8,6 @@
 volatile uint16_t adc_buffer[SAMPLE_BUF_LEN];
 
 #ifdef RENODE_DEMO
-/* Renode's stock DMA model does not fire per-conversion peripheral
- * requests for ADC->memory transfers, so under RENODE_DEMO the buffer
- * is filled by polling the ADC directly instead of via DMA. The real
- * DMA_Init/DMA_Start path below is unchanged for hardware builds. */
 volatile uint16_t renode_write_idx = 0;
 #endif
 
