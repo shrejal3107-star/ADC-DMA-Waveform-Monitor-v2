@@ -31,18 +31,6 @@ make
 
 Produces `build/waveform_monitor.elf`.
 
-### Renode simulation note
-
-Renode's stock STM32 DMA model doesn't fire per-conversion
-peripheral-to-memory DMA requests the way real silicon does — it
-completes the whole configured transfer once, immediately, instead of
-waiting for each ADC conversion's DMA request pulse. To demonstrate
-the reporting/UART side of the pipeline in Renode, this build defines
-`RENODE_DEMO`, which polls the ADC directly to fill the buffer instead
-of relying on DMA. The real DMA-driven path (`DMA_Init`/`DMA_Start`)
-is unchanged and is what runs on real hardware — build without
-`-DRENODE_DEMO` (remove that line from the Makefile) for a
-hardware/production build.
 
 ## Running in Renode
 
